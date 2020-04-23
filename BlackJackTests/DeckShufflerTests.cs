@@ -10,7 +10,7 @@ namespace BlackJackTests
         {
         }
 
-        
+        //just a test
         //How can you test whether the ShuffleTheDeck method worked properly?
         //Maybe I can run the method twice and compare that the last item on the list are not equal!?
 
