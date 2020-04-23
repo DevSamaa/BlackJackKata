@@ -7,9 +7,6 @@ namespace BlackJackKata
         {
         }
 
-        public void ShuffleTheDeck()
-        {
-
-        }
+        
     }
 }
