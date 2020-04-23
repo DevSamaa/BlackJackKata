@@ -45,9 +45,9 @@ namespace BlackJackTests
 
 
 
-        //TODO -> write this with inline data for all 4 suits
+        
         [Fact]
-        public void CreateDeck_GivenCardShouldExist3()
+        public void CreateDeck_GivenCardShouldExist_UsingFindAll()
         {
 
             var allClubs = deckOfCards.FindAll(card => card.suit.Contains("CLUB"));
@@ -56,5 +56,23 @@ namespace BlackJackTests
 
 
         }
+
+
+        //---Same test as above but this time with InlineData
+        [Theory]
+        [InlineData("CLUB", 13)]
+        [InlineData("DIAMOND", 13)]
+        [InlineData("HEART", 13)]
+        [InlineData("SPADE", 13)]
+        public void CreateDeck_GivenCardShouldExist_UsingFindAll_Inline(string incomingSuit, int expectedSuits)
+        {
+
+            var allClubs = deckOfCards.FindAll(card => card.suit.Contains(incomingSuit));
+
+            Assert.Equal(expectedSuits, allClubs.Count);
+
+
+        }
     }
 }
+
