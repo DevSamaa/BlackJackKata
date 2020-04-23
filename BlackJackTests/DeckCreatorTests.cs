@@ -44,7 +44,6 @@ namespace BlackJackTests
         }
 
 
-       
 
         //TODO -> write this with inline data for all 4 suits
         [Fact]

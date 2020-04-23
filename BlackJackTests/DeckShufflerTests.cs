@@ -15,5 +15,7 @@ namespace BlackJackTests
         //Maybe I can run the method twice and compare that the last item on the list are not equal!?
 
         //var lastCard = deckOfCards[deckOfCards.Count - 1];
+
+        //this is some code11!
     }
 }
