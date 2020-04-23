@@ -19,6 +19,9 @@ namespace BlackJackTests
         //this is some code11!
 
         [Fact]
+        public void Method()
+        {
 
+        }
     }
 }
