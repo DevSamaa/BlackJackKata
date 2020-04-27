@@ -11,19 +11,44 @@ namespace BlackJackTests
         }
 
         
-        //How can you test whether the ShuffleTheDeck method worked properly?
-        //Maybe I can run the method twice and compare that the last item on the list are not equal!?
-
-        //var lastCard = deckOfCards[deckOfCards.Count - 1];
-
-        
 
         [Fact]
-        public void Method()
+        public void ShuffleTheDeck_GivenADeck_ShouldReturnDifferentDeck()
         {
+            //arrange
+            var deckCreator = new DeckCreator();
+            var deckOfCards = deckCreator.CreateDeck();
+            var deckShuffler = new DeckShuffler();
 
+            //action
+            var shuffledDeck = deckShuffler.ShuffleTheDeck(deckOfCards);
+
+            //assert
+            //counts of both lists should be the same (52)
+            Assert.Equal(deckOfCards.Count, shuffledDeck.Count);
+            //actual lists should not be the same
+            Assert.NotEqual(deckOfCards, shuffledDeck);
         }
 
-        //Test at 16:27
+        [Fact]
+        public void ShuffleTheDeck_GivenADeck_ShouldReturnDifferentDeckEachTime()
+        {
+            //arrange
+            var deckCreator = new DeckCreator();
+            var deckOfCards = deckCreator.CreateDeck();
+            var deckShuffler = new DeckShuffler();
+
+            //action
+            var shuffledDeckOne = deckShuffler.ShuffleTheDeck(deckOfCards);
+            var shuffledDeckTwo = deckShuffler.ShuffleTheDeck(deckOfCards);
+
+            //assert
+            //counts of both lists should be the same (52)
+            Assert.Equal(shuffledDeckOne.Count, shuffledDeckTwo.Count);
+            //actual lists should not be the same
+            Assert.NotEqual(shuffledDeckOne, shuffledDeckTwo);
+        }
+
     }
 }
+
