@@ -16,7 +16,7 @@ namespace BlackJackKata
             var shuffledDeck = deckShuffler.ShuffleTheDeck(deckOfCards);
 
             var cardRemover = new CardRemover();
-            var removedCards = cardRemover.RemoveCards2(shuffledDeck);
+            var removedCard = cardRemover.RemoveCard(shuffledDeck);
 
 
         }
