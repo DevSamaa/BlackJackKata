@@ -43,7 +43,7 @@ namespace BlackJackTests
             var shuffledDeckTwo = deckShuffler.ShuffleTheDeck(deckOfCards);
 
             //assert
-            //counts of both lists should be the same (52)
+            //counts of both lists should be the same 
             Assert.Equal(shuffledDeckOne.Count, shuffledDeckTwo.Count);
             //actual lists should not be the same
             Assert.NotEqual(shuffledDeckOne, shuffledDeckTwo);
