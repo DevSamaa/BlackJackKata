@@ -30,10 +30,10 @@ namespace BlackJackTests
         {
             //arrange
             var cardRemover = new CardRemover();
+            var newCountOfDeck = currentDeck.Count - 1;
 
             //action
             var listOfRemovedCard = cardRemover.RemoveCard(currentDeck);
-            var newCountOfDeck = currentDeck.Count - 1;
 
             //assert
             Assert.Equal(newCountOfDeck, currentDeck.Count);
