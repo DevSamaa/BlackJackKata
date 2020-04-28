@@ -10,7 +10,6 @@ namespace BlackJackTests
         public CardRemoverTests()
         {
         }
-        //Question for mentors => is Member Data only able to test an array of objects, not a list of objects? Why can't I use List<CardModel>?
         public static IEnumerable<object[]> DeckOfCards()
         {
             var deckOfCards = new List<CardModel>() {
@@ -21,20 +20,20 @@ namespace BlackJackTests
                 new CardModel("HEART", "Q", 10)
 
             };
-            yield return new object[] { deckOfCards, deckOfCards.Count };
+            yield return new object[] { deckOfCards };
 
         }
 
         [Theory]
         [MemberData(nameof(DeckOfCards))]
-        public void RemoveCard_GivenADeck_ShouldReturnDeckMinusOne_AndListWithOneCard(List<CardModel> currentDeck, int initialCountOfDeck)
+        public void RemoveCard_GivenADeck_ShouldReturnDeckMinusOne_AndListWithOneCard(List<CardModel> currentDeck)
         {
             //arrange
             var cardRemover = new CardRemover();
-            var newCountOfDeck = initialCountOfDeck - 1;
 
             //action
             var listOfRemovedCard = cardRemover.RemoveCard(currentDeck);
+            var newCountOfDeck = currentDeck.Count - 1;
 
             //assert
             Assert.Equal(newCountOfDeck, currentDeck.Count);
