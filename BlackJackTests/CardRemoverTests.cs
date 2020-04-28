@@ -7,12 +7,13 @@ namespace BlackJackTests
 {
     public class CardRemoverTests
     {
+        CardRemover cardRemover = new CardRemover();
+
         public CardRemoverTests()
         {
         }
-        public static IEnumerable<object[]> DeckOfCards()
-        {
-            var deckOfCards = new List<CardModel>() {
+
+        List<CardModel> deckOfCards = new List<CardModel>() {
 
                 new CardModel("CLUB", "A", 1),
                 new CardModel("DIAMOND", "K", 10),
@@ -20,27 +21,38 @@ namespace BlackJackTests
                 new CardModel("HEART", "Q", 10)
 
             };
-            yield return new object[] { deckOfCards };
+           
 
-        }
 
-        [Theory]
-        [MemberData(nameof(DeckOfCards))]
-        public void RemoveCard_GivenADeck_ShouldReturnDeckMinusOne_AndListWithOneCard(List<CardModel> currentDeck)
+       [Fact]
+        public void RemoveCardFromDeck_GivenADeck_ShouldReturnCard_AndDeckMinusOne()
         {
             //arrange
-            var cardRemover = new CardRemover();
-            var newCountOfDeck = currentDeck.Count - 1;
+            var newCountOfDeck = deckOfCards.Count - 1;
 
             //action
-            var listOfRemovedCard = cardRemover.RemoveCard(currentDeck);
+            var removedCard = cardRemover.RemoveCardFromDeck(deckOfCards);
 
             //assert
-            Assert.Equal(newCountOfDeck, currentDeck.Count);
-            Assert.True(listOfRemovedCard.Count == 1);
+            Assert.Equal(newCountOfDeck, deckOfCards.Count);
+            Assert.DoesNotContain(removedCard, deckOfCards);
         }
 
+        
 
-       
+        [Fact]
+        public void AddCardToPlayerList_GivenCard_ReturnsListOfCards()
+        {
+            //arrange
+            var card = deckOfCards[0];
+            //action
+            var listOfPlayerCards = cardRemover.AddCardToPlayerList(card);
+
+            //assert
+            Assert.Contains(card, listOfPlayerCards);
+            Assert.Single(listOfPlayerCards);
+
+        }
+
     }
 }
