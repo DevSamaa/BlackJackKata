@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BlackJackKata
 {
-    public class CardRemover
+    public class CardHandler
     {
-        public CardRemover()
+        public CardHandler()
         {
         }
 
@@ -21,14 +21,11 @@ namespace BlackJackKata
               
         }
 
-
-        public List<CardModel> AddCardToPlayerList(CardModel incomingCard)
+        public void AddCardToPlayersCards(CardModel incomingCard, List<CardModel> playersCards)
         {
-            var newList = new List<CardModel>();
-            newList.Add(incomingCard);
-            return newList;
+            playersCards.Add(incomingCard);
         }
-       
+
 
     }
 }
