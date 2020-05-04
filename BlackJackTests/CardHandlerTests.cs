@@ -38,7 +38,8 @@ namespace BlackJackTests
         }
 
 
-        [Fact]
+        [Fact(Skip = "trying this out")]
+        [Trait("Category", "CardHandling")]
         public void AddCardToPlayersCards_GivenCard_ReturnsListOfCards()
         {
             //arrange
