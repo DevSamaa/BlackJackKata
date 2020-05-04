@@ -24,9 +24,62 @@ namespace BlackJackKata
             var removedCard2 = cardHandler.RemoveCardFromDeck(shuffledDeck);
             cardHandler.AddCardToPlayersCards(removedCard2, player.playersCards);
 
-            //Print the cards that the user now has (look at magic year calcuclator to see how o seperate out logic and print to be able to test them properly
-            //print the menu for playing
 
+            while (true)
+            {
+                // Calculate points and show them to everyone
+                var playersPoints = player.CalculatePoints();
+                player.ShowPoints(playersPoints);
+                player.ShowCards();
+
+                //Get UserInput (Hit or Stay)
+                var userInput = new UserInput();
+
+                int validatedNumber;
+
+                while (true)
+                {
+
+                    try
+                    {
+                        var savedUserInput = userInput.UserPrompt();
+
+                        validatedNumber = userInput.ValidateNumber(savedUserInput);
+
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+
+                //if they selected hit this should happen
+                if (validatedNumber == 1)
+                {
+                    var removedCard3 = cardHandler.RemoveCardFromDeck(shuffledDeck);
+                    cardHandler.AddCardToPlayersCards(removedCard3, player.playersCards);
+                    playersPoints = player.CalculatePoints();
+                }
+                else
+                {
+                    break;
+                }
+
+                // "checkIfBust" method
+                if (playersPoints>21)
+                {
+                    player.ShowPoints(playersPoints);
+                    player.ShowCards();
+                    Console.WriteLine("You have gone bust. You lose. Game Over.");
+                    return;
+                }
+
+            }
+
+            //TODO the other players turn begins - check whether the other person has gone bust, or decided to stay
+
+            Console.WriteLine("dealers turn is starting");
 
 
         }
