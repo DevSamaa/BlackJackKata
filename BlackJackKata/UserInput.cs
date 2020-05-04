@@ -7,7 +7,27 @@ namespace BlackJackKata
         {
         }
 
-     
+        public string UserSelection()
+        {
+            while (true)
+            {
+                    var savedUserInput = UserPrompt();
+
+                    var isValid = ValidateInput(savedUserInput);
+
+                    if (isValid)
+                    {
+                    return savedUserInput;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That is not a valid selection. Please try again.");
+                    }
+            }
+
+        }
+
+
 
         public string UserPrompt()
         {
@@ -15,18 +35,19 @@ namespace BlackJackKata
             return Console.ReadLine();
         }
 
+
+
         //where this method is called, you'll need to add an if statment and based on the result either hit or stay
-        public int ValidateNumber(string incomingNumber)
+        public bool ValidateInput(string incomingString)
         {
-            if (incomingNumber == "1")
+            if (incomingString == "1" || incomingString == "0")
             {
-                return 1;
+                return true;
             }
-            else if (incomingNumber == "0")
+            else
             {
-                return 0;
+                return false;
             }
-            throw new Exception("Your input was invalid. Please just type 1 to hit, 0 to stay");
         }
     }
 }
