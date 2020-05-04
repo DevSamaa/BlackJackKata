@@ -10,7 +10,7 @@ namespace BlackJackKata
         }
 
 
-        public CardModel RemoveCardFromDeck(List<CardModel> incomingDeck)
+        public Card RemoveCardFromDeck(List<Card> incomingDeck)
         {
 
             var pickedCard = incomingDeck[0];
@@ -21,7 +21,7 @@ namespace BlackJackKata
               
         }
 
-        public void AddCardToPlayersCards(CardModel incomingCard, List<CardModel> playersCards)
+        public void AddCardToPlayersCards(Card incomingCard, List<Card> playersCards)
         {
             playersCards.Add(incomingCard);
         }

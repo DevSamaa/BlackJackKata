@@ -9,7 +9,7 @@ namespace BlackJackKata
         {
         }
 
-        public void dealInitialCards(CardHandler cardHandler, List<CardModel> shuffledDeck, Player player)
+        public void dealInitialCards(CardHandler cardHandler, List<Card> shuffledDeck, Player player)
         {
             var removedCard1 = cardHandler.RemoveCardFromDeck(shuffledDeck);
             cardHandler.AddCardToPlayersCards(removedCard1, player.playersCards);

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BlackJackKata
 {
-    public class CardModel
+    public class Card
     {
         //properties - these are the things that each CardModel has.
         public string suit { get; set; }
@@ -9,7 +9,7 @@ namespace BlackJackKata
         public int points { get; set; }
 
         //constructor - these arguments must be passed in order for a new object to be created.
-        public CardModel(string incomingSuit, string incomingFace, int incomingPoints)
+        public Card(string incomingSuit, string incomingFace, int incomingPoints)
         {
             suit = incomingSuit;
             face = incomingFace;

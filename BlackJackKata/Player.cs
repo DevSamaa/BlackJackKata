@@ -6,7 +6,7 @@ namespace BlackJackKata
     public class Player
     {
 
-        public List<CardModel> playersCards = new List<CardModel>();
+        public List<Card> playersCards = new List<Card>();
 
         public Player()
         {

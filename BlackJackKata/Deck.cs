@@ -15,7 +15,7 @@ namespace BlackJackKata
         {
         }
 
-        public List<CardModel> CreateShuffledDeck()
+        public List<Card> CreateShuffledDeck()
         {
             var deckOfCards = CreateCards();
             var shuffledDeck = ShuffleCards(deckOfCards);
@@ -23,15 +23,15 @@ namespace BlackJackKata
         }
 
 
-        public List<CardModel> CreateCards()
+        public List<Card> CreateCards()
         {
-            List<CardModel> deckOfCards = new List<CardModel>();
+            List<Card> deckOfCards = new List<Card>();
 
             foreach (var item in suits)
             {
                 for (int index = 0; index < 13; index++)
                 {
-                    var aCard = new CardModel(item, faces[index], points[index]);
+                    var aCard = new Card(item, faces[index], points[index]);
                     deckOfCards.Add(aCard);
 
                 }
@@ -43,7 +43,7 @@ namespace BlackJackKata
         }
 
 
-        public List<CardModel> ShuffleCards(List<CardModel> incomingCards)
+        public List<Card> ShuffleCards(List<Card> incomingCards)
         {
             var shuffledDeck = incomingCards.OrderBy(x => Guid.NewGuid()).ToList();
             return shuffledDeck;
