@@ -26,6 +26,7 @@ namespace BlackJackKata
                 var player1Score = gamemaster.playGame(player1, cardHandler, shuffledDeck);
                 if (player1Score >21)
                 {
+                    Console.WriteLine("Player2 wins");
                     break;
                 }
                 Console.WriteLine("You're turn is over, the dealers turn begins");
@@ -34,6 +35,7 @@ namespace BlackJackKata
                 var player2Score = gamemaster.playGame(player2, cardHandler, shuffledDeck);
                 if (player2Score > 21)
                 {
+                    Console.WriteLine("Player1 wins");
                     break;
                 }
 
