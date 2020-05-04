@@ -13,12 +13,12 @@ namespace BlackJackTests
         {
         }
 
-        List<CardModel> deckOfCards = new List<CardModel>() {
+        List<Card> deckOfCards = new List<Card>() {
 
-                new CardModel("CLUB", "A", 1),
-                new CardModel("DIAMOND", "K", 10),
-                new CardModel("SPADE", "7", 7),
-                new CardModel("HEART", "Q", 10)
+                new Card("CLUB", "A", 1),
+                new Card("DIAMOND", "K", 10),
+                new Card("SPADE", "7", 7),
+                new Card("HEART", "Q", 10)
 
             };
            
@@ -38,13 +38,12 @@ namespace BlackJackTests
         }
 
 
-        [Fact(Skip = "trying this out")]
-        [Trait("Category", "CardHandling")]
+        [Fact]
         public void AddCardToPlayersCards_GivenCard_ReturnsListOfCards()
         {
             //arrange
             var card = deckOfCards[0];
-            var listOfPlayerCards = new List<CardModel>();
+            var listOfPlayerCards = new List<Card>();
 
             //action
             cardHandler.AddCardToPlayersCards(card,listOfPlayerCards);

@@ -19,12 +19,12 @@ namespace BlackJackTests
         public void CalculatePoints_GivenListOfCards()
         {
             //arrange
-            List <CardModel > sampleCards = new List<CardModel>() {
+            List <Card > sampleCards = new List<Card>() {
 
-                new CardModel("CLUB", "A", 1),
-                new CardModel("DIAMOND", "6", 6),
-                new CardModel("SPADE", "7", 7),
-                new CardModel("HEART", "Q", 10)
+                new Card("CLUB", "A", 1),
+                new Card("DIAMOND", "6", 6),
+                new Card("SPADE", "7", 7),
+                new Card("HEART", "Q", 10)
 
             };
 
