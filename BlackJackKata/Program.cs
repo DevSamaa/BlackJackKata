@@ -14,19 +14,31 @@ namespace BlackJackKata
             var deck = new Deck();
             var shuffledDeck = deck.CreateShuffledDeck();
 
+            //TODO: once this works (in a refactored way) for 1 player, add player2!
+            var gamemaster = new GameMaster();
             var cardHandler = new CardHandler();
 
-            //TODO: once this works (in a refactored way) for 1 player, add player2!
-            var player = new Player();
+            var player1 = new Player();
+            var player2 = new Player();
+            Player[] allPlayers = { player1, player2 };
 
-            var gamemaster = new GameMaster();
-            gamemaster.dealInitialCards(cardHandler, shuffledDeck, player);
+            foreach (var player in allPlayers)
+            {
+                int playerScore = 0;
+                while (playerScore < 21)
+                {
 
-            gamemaster.playGame(player, cardHandler,shuffledDeck);
+                    gamemaster.dealInitialCards(cardHandler, shuffledDeck, player);
+                    playerScore = gamemaster.playGame(player, cardHandler, shuffledDeck);
+                    Console.WriteLine("You're turn is over");
+                }
+                
 
-
-            //TODO the other players turn begins - check whether the other person has gone bust, or decided to stay
-            Console.WriteLine("dealers turn is starting");
+            }
+            //TODO check whether the player person has gone bust, if they have the game should be over
+            //TODO I need to somehow return
+            //TODO win at 21! No need to stay! should be automatic
+           
 
 
         }

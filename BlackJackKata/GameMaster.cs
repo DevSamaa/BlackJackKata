@@ -27,7 +27,7 @@ namespace BlackJackKata
             return playersPoints;
         }
 
-        public void playGame(Player player, CardHandler cardHandler, List<Card> shuffledDeck)
+        public int playGame(Player player, CardHandler cardHandler, List<Card> shuffledDeck)
         {
             while (true)
             {
@@ -49,18 +49,21 @@ namespace BlackJackKata
                 }
                 else
                 {
-                    break;
+                    return playersPoints;
+                    //break;
                 }
 
                 //Check If Bust
+                //TODO refactor this to be a bool
                 if (playersPoints > 21)
                 {
                     player.ShowPoints(playersPoints);
                     player.ShowCards();
                     Console.WriteLine("You have gone bust. You lose. Game Over.");
-                    return;
+                    return playersPoints;
                 }
 
+                
             }
         }
     }
