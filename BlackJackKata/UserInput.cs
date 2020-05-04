@@ -28,7 +28,6 @@ namespace BlackJackKata
         }
 
 
-
         public string UserPrompt()
         {
             Console.WriteLine("Hit or stay? (Hit = 1, Stay = 0)");
@@ -36,8 +35,6 @@ namespace BlackJackKata
         }
 
 
-
-        //where this method is called, you'll need to add an if statment and based on the result either hit or stay
         public bool ValidateInput(string incomingString)
         {
             if (incomingString == "1" || incomingString == "0")

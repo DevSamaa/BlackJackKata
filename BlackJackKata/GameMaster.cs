@@ -26,5 +26,42 @@ namespace BlackJackKata
             player.ShowCards();
             return playersPoints;
         }
+
+        public void playGame(Player player, CardHandler cardHandler, List<Card> shuffledDeck)
+        {
+            while (true)
+            {
+                // Calculate points and show them to everyone
+                var playersPoints = showCardsAndPoints(player);
+
+                //Get UserInput (Hit or Stay)
+                var userInput = new UserInput();
+                var validatedString = userInput.UserSelection();
+
+                //if they selected hit this should happen
+                if (validatedString == "1")
+                {
+                    //TODO --> group the next two lines together as issue1Card
+                    var removedCard3 = cardHandler.RemoveCardFromDeck(shuffledDeck);
+                    cardHandler.AddCardToPlayersCards(removedCard3, player.playersCards);
+
+                    playersPoints = player.CalculatePoints();
+                }
+                else
+                {
+                    break;
+                }
+
+                //Check If Bust
+                if (playersPoints > 21)
+                {
+                    player.ShowPoints(playersPoints);
+                    player.ShowCards();
+                    Console.WriteLine("You have gone bust. You lose. Game Over.");
+                    return;
+                }
+
+            }
+        }
     }
 }
