@@ -4,18 +4,25 @@ using System.Collections.Generic;
 namespace BlackJackKata
 {
     public class GameMaster
+        //This class is responsible for playing a hand ( that includes dealing the initial 2 cards, showing the players points and cards,  checking if they have gone bust, and asking them whether they want to hit or stay.
     {
-        public GameMaster()
+        private CardHandler _cardHandler;
+        private List<Card> _shuffledDeck;
+
+        public GameMaster(CardHandler cardHandler= null,Deck deck = null)
         {
+            _cardHandler = cardHandler ?? new CardHandler();
+           var _deck = deck ?? new Deck();
+            _shuffledDeck = _deck.CreateShuffledDeck();
         }
 
-        public void dealInitialCards(CardHandler cardHandler, List<Card> shuffledDeck, Player player)
+        public void dealInitialCards(Player player)
         {
-            var removedCard1 = cardHandler.RemoveCardFromDeck(shuffledDeck);
-            cardHandler.AddCardToPlayersCards(removedCard1, player.playersCards);
+            var removedCard1 = _cardHandler.RemoveCardFromDeck(_shuffledDeck);
+            _cardHandler.AddCardToPlayersCards(removedCard1, player.playersCards);
 
-            var removedCard2 = cardHandler.RemoveCardFromDeck(shuffledDeck);
-            cardHandler.AddCardToPlayersCards(removedCard2, player.playersCards);
+            var removedCard2 = _cardHandler.RemoveCardFromDeck(_shuffledDeck);
+            _cardHandler.AddCardToPlayersCards(removedCard2, player.playersCards);
         }
 
 
@@ -27,9 +34,13 @@ namespace BlackJackKata
             return playersPoints;
         }
 
-        public int playGame(Player player, CardHandler cardHandler, List<Card> shuffledDeck)
+        
+
+        public void playGame(Player player)
         {
-            while (true)
+            //you get the first 2 cards
+            dealInitialCards(player);
+            while (!player.isBust())
             {
                 // Calculate points and show them to everyone
                 var playersPoints = showCardsAndPoints(player);
@@ -41,30 +52,36 @@ namespace BlackJackKata
                 //if they selected hit this should happen
                 if (validatedString == "1")
                 {
-                    //TODO --> group the next two lines together as issue1Card
-                    var removedCard3 = cardHandler.RemoveCardFromDeck(shuffledDeck);
-                    cardHandler.AddCardToPlayersCards(removedCard3, player.playersCards);
+                    var removedCard3 = _cardHandler.RemoveCardFromDeck(_shuffledDeck);
+                    _cardHandler.AddCardToPlayersCards(removedCard3, player.playersCards);
 
-                    playersPoints = player.CalculatePoints();
                 }
                 else
                 {
-                    return playersPoints;
-                    //break;
+                    return;
                 }
 
-                //Check If Bust
-                //TODO refactor this to be a bool
-                if (playersPoints > 21)
-                {
-                    player.ShowPoints(playersPoints);
-                    player.ShowCards();
-                    Console.WriteLine("You have gone bust. You lose. Game Over.");
-                    return playersPoints;
-                }
+            }
+            showCardsAndPoints(player);
+            Console.WriteLine("You've gone bust. You lose.");
+        }
 
-                
+
+        public void findWinnner(int player1Score, int player2Score)
+        {
+            if (player1Score > player2Score)
+            {
+                Console.WriteLine("Player1 wins");
+            }
+            else if (player1Score == player2Score)
+            {
+                Console.WriteLine("It's a tie! Both player1 and player2 win!");
+            }
+            else
+            {
+                Console.WriteLine("Player2Wins");
             }
         }
+
     }
 }

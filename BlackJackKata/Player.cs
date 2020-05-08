@@ -7,6 +7,7 @@ namespace BlackJackKata
     {
 
         public List<Card> playersCards = new List<Card>();
+        
 
         public Player()
         {
@@ -37,6 +38,21 @@ namespace BlackJackKata
         public void ShowPoints(int playersPoints)
         {
             Console.WriteLine($"You currently have {playersPoints} points.");
+        }
+
+
+        public bool isBust()
+        {
+            var playersPoints = CalculatePoints();
+            if (playersPoints > 21)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
     }
