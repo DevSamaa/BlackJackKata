@@ -40,10 +40,17 @@ namespace BlackJackKata
         {
             //you get the first 2 cards
             dealInitialCards(player);
-            while (!player.isBust())
+            while (true)
             {
                 // Calculate points and show them to everyone
                 var playersPoints = showCardsAndPoints(player);
+
+                //check if bust
+                if (player.isBust())
+                {
+                    Console.WriteLine("You've gone bust. You lose.");
+                    break;
+                }
 
                 //Get UserInput (Hit or Stay)
                 var userInput = new UserInput();
@@ -62,8 +69,6 @@ namespace BlackJackKata
                 }
 
             }
-            showCardsAndPoints(player);
-            Console.WriteLine("You've gone bust. You lose.");
         }
 
 
