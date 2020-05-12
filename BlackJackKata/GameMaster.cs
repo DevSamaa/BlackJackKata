@@ -52,15 +52,14 @@ namespace BlackJackKata
                     break;
                 }
 
-                //Get UserInput (Hit or Stay)
-                var userInput = new UserInput();
-                var validatedString = userInput.UserSelection();
+                //Decide whether player wants to hit or stay
+                var wantsToHit = player.WantsToHit();
 
                 //if they selected hit this should happen
-                if (validatedString == "1")
+                if (wantsToHit)
                 {
-                    var removedCard3 = _cardHandler.RemoveCardFromDeck(_shuffledDeck);
-                    _cardHandler.AddCardToPlayersCards(removedCard3, player.playersCards);
+                    var removedCard = _cardHandler.RemoveCardFromDeck(_shuffledDeck);
+                    _cardHandler.AddCardToPlayersCards(removedCard, player.playersCards);
 
                 }
                 else
@@ -90,3 +89,7 @@ namespace BlackJackKata
 
     }
 }
+
+
+//We are going to start with virtual and override.
+//Later we will have an abstract player class.

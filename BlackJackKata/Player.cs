@@ -26,19 +26,12 @@ namespace BlackJackKata
 
         public int CalculatePoints()
         {
-            //add up all the .points on a card
-            //except where the card.face is A
-                //-> make A worth 11 points, unless that would make them go bust, then A= 1 point.
-
-            //what would make a player go bust? If allpoints = 11
             int allpoints = 0;
             foreach (var card in playersCards)
             {
                 allpoints = allpoints + card.points;
             }
 
-
-            //if allpoints <12 , then we want to check whether you have an ace (card.face) --> if true add 10 points
             if ( allpoints <12 && playersCards.Any(card => card.face =="A"))
             {
                 allpoints = allpoints + 10;
@@ -58,16 +51,33 @@ namespace BlackJackKata
         public bool isBust()
         {
             var playersPoints = CalculatePoints();
-            if (playersPoints > 21)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return playersPoints > 21;
+
+        }
+
+        public bool WantsToHit()
+        {
+            var userInput = new UserInput();
+            var validatedUserSelection = userInput.UserSelection();
+
+            //this is called an inline conditional!?
+            return validatedUserSelection == "1";
+
+            //Here is the ternary operator version:
+            //return validatedString == "1" ? true : false;
+
+            // This uses an If statment:
+            //if (validatedString =="1")
+            //{
+            //    return true;
+            //}
+            //return false;
+
 
         }
 
     }
 }
+
+
+//TODO check that all methods start with a capital letter, so IsBust, not isBust!!
