@@ -9,18 +9,8 @@ namespace BlackJackKata
 
         public override bool WantsToHit()
         {
-            int allpoints = 0;
-            foreach (var card in playersCards)
-            {
-               allpoints = allpoints + card.points;
-            }
-
-            if (allpoints < 17)
-            {
-             return true;
-            }
-            return false;
-
+            var allpoints = CalculatePoints();
+            return allpoints < 17;
         }
     }
 }
