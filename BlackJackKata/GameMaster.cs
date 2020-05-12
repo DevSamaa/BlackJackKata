@@ -91,5 +91,3 @@ namespace BlackJackKata
 }
 
 
-//We are going to start with virtual and override.
-//Later we will have an abstract player class.

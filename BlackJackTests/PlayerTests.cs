@@ -46,9 +46,6 @@ namespace BlackJackTests
             List<Card> sampleCards = new List<Card>() {
 
                 new Card("CLUB", "A", 1),
-                //new Card("DIAMOND", "10", 10),
-                //new Card("SPADE", "7", 7),
-                //new Card("HEART", "Q", 10),
                 new Card("HEART", "A", 1)
 
             };
@@ -66,7 +63,7 @@ namespace BlackJackTests
 
 
 
-        //TODO rewrite with Member Data-------------------------------------------------------------
+        // Like the test above but with Member Data-------------------------------------------------------------
 
         public static IEnumerable<object[]> sampleCards()
         {
@@ -90,7 +87,6 @@ namespace BlackJackTests
             var currentPoints = player.CalculatePoints();
 
             //assert
-            //Assert.True(expectedPoints.Equals(currentPoints));
             Assert.Equal(expectedPoints, currentPoints);
         }
     }

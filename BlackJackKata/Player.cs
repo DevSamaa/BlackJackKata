@@ -55,7 +55,7 @@ namespace BlackJackKata
 
         }
 
-        public bool WantsToHit()
+        public virtual bool WantsToHit()
         {
             var userInput = new UserInput();
             var validatedUserSelection = userInput.UserSelection();
@@ -73,11 +73,9 @@ namespace BlackJackKata
             //}
             //return false;
 
-
         }
 
     }
 }
 
 
-//TODO check that all methods start with a capital letter, so IsBust, not isBust!!

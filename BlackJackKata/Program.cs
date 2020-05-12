@@ -14,7 +14,7 @@ namespace BlackJackKata
             var gamemaster = new GameMaster();
 
             var player1 = new Player();
-            var player2 = new Player();
+            var player2 = new Dealer();
 
             
                 gamemaster.playGame(player1);
@@ -44,3 +44,9 @@ namespace BlackJackKata
         }
     }
 }
+
+//Notes for Saiyi :)
+//--> We are going to start with virtual and override.
+//Later we will have an abstract player class.
+
+//TODO check that all methods start with a capital letter, so IsBust, not isBust!!
