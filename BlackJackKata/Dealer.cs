@@ -12,5 +12,7 @@ namespace BlackJackKata
             var allpoints = CalculatePoints();
             return allpoints < 17;
         }
+
+        
     }
 }
