@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BlackJackKata
 {
-    public class Player
+    public abstract class Player
     {
 
         public List<Card> playersCards = new List<Card>();
@@ -16,12 +16,17 @@ namespace BlackJackKata
 
         public void ShowCards()
         {
-            Console.WriteLine($"Your current cards are: ");
+            Console.WriteLine($"Your cards: ");
 
             foreach (var card in playersCards)
             {
                 Console.WriteLine($"[{card.face}] [{card.suit}]");
             }
+        }
+
+        public void ShowPoints(int playersPoints)
+        {
+            Console.WriteLine($"You currently have {playersPoints} points.\n");
         }
 
         public int CalculatePoints()
@@ -40,40 +45,15 @@ namespace BlackJackKata
 
         }
 
-
-
-        public void ShowPoints(int playersPoints)
-        {
-            Console.WriteLine($"You currently have {playersPoints} points.");
-        }
-
-
-        public bool isBust()
+        public bool IsBust()
         {
             var playersPoints = CalculatePoints();
             return playersPoints > 21;
 
         }
 
-        public virtual bool WantsToHit()
-        {
-            var userInput = new UserInput();
-            var validatedUserSelection = userInput.UserSelection();
-
-            //this is called an inline conditional!?
-            return validatedUserSelection == "1";
-
-            //Here is the ternary operator version:
-            //return validatedString == "1" ? true : false;
-
-            // This uses an If statment:
-            //if (validatedString =="1")
-            //{
-            //    return true;
-            //}
-            //return false;
-
-        }
+        public abstract bool WantsToHit();
+        
 
     }
 }

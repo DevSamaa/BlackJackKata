@@ -9,21 +9,17 @@ namespace BlackJackKata
         {
         }
 
-
-        public Card RemoveCardFromDeck(List<Card> incomingDeck)
+        public void DealOneCard(List<Card> incomingDeck, List<Card> playersCards)
         {
-
-            var pickedCard = incomingDeck[0];
-
-            incomingDeck.RemoveAt(0);
-
-            return pickedCard;
-              
+            var removedCard = RemoveCardFromDeck(incomingDeck);
+            playersCards.Add(removedCard);
         }
 
-        public void AddCardToPlayersCards(Card incomingCard, List<Card> playersCards)
+        private Card RemoveCardFromDeck(List<Card> incomingDeck)
         {
-            playersCards.Add(incomingCard);
+            var pickedCard = incomingDeck[0];
+            incomingDeck.RemoveAt(0);
+            return pickedCard;
         }
 
 

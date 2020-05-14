@@ -28,14 +28,14 @@ namespace BlackJackKata
         }
 
 
-        public string UserPrompt()
+        private string UserPrompt()
         {
             Console.WriteLine("Hit or stay? (Hit = 1, Stay = 0)");
             return Console.ReadLine();
         }
 
 
-        public bool ValidateInput(string incomingString)
+        private bool ValidateInput(string incomingString)
         {
             if (incomingString == "1" || incomingString == "0")
             {
