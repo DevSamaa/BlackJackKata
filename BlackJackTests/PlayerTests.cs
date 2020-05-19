@@ -11,7 +11,7 @@ namespace BlackJackTests
 
         public PlayerShould()
         {
-            player = new Player();
+            player = new Human();
         }
 
 
@@ -60,7 +60,6 @@ namespace BlackJackTests
             Assert.Equal(12, currentPoints);
 
         }
-
 
 
         // Like the test above but with Member Data-------------------------------------------------------------

@@ -14,7 +14,7 @@ namespace BlackJackKata
         {
         }
 
-        private List<Card> CreateCards()
+        public List<Card> CreateCards()
         {
             List<Card> deckOfCards = new List<Card>();
 
@@ -31,7 +31,7 @@ namespace BlackJackKata
         }
 
 
-        private List<Card> ShuffleCards(List<Card> incomingCards)
+        public List<Card> ShuffleCards(List<Card> incomingCards)
         {
             var shuffledDeck = incomingCards.OrderBy(x => Guid.NewGuid()).ToList();
             return shuffledDeck;

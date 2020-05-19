@@ -5,11 +5,11 @@ using Xunit;
 
 namespace BlackJackTests
 {
-    public class CardHandlerTests
+    public class CardHandlerShould
     {
         CardHandler cardHandler = new CardHandler();
 
-        public CardHandlerTests()
+        public CardHandlerShould()
         {
         }
 
@@ -24,34 +24,35 @@ namespace BlackJackTests
            
 
        [Fact]
-        public void RemoveCardFromDeck_GivenADeck_ShouldReturnCard_AndDeckMinusOne()
+        public void RemoveOneCard_GivenADeck()
         {
             //arrange
             var newCountOfDeck = deckOfCards.Count - 1;
 
             //action
-            var removedCard = cardHandler.RemoveCardFromDeck(deckOfCards);
+            cardHandler.RemoveCardFromDeck(deckOfCards);
 
             //assert
             Assert.Equal(newCountOfDeck, deckOfCards.Count);
-            Assert.DoesNotContain(removedCard, deckOfCards);
         }
 
 
         [Fact]
-        public void AddCardToPlayersCards_GivenCard_ReturnsListOfCards()
+        public void ReturnADeckWithoutRemovedCard()
         {
-            //arrange
-            var card = deckOfCards[0];
-            var listOfPlayerCards = new List<Card>();
 
             //action
-            cardHandler.AddCardToPlayersCards(card,listOfPlayerCards);
+            var removedCard = cardHandler.RemoveCardFromDeck(deckOfCards);
 
             //assert
-            Assert.Contains(card, listOfPlayerCards);
-            Assert.Single(listOfPlayerCards);
+            Assert.DoesNotContain(removedCard, deckOfCards);
+
         }
+
+
+
+
+
 
     }
 }

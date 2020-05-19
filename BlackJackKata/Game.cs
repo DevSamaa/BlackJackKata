@@ -38,7 +38,8 @@ namespace BlackJackKata
             var humanScore = _human.CalculatePoints();
             var dealerScore = _dealer.CalculatePoints();
 
-            _endOfGame.FindWinnner(humanScore, dealerScore);
+            var winnerIs =  _endOfGame.FindWinnner(humanScore, dealerScore);
+            Console.WriteLine(winnerIs);
 
 
         }

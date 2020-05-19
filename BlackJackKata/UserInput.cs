@@ -35,7 +35,7 @@ namespace BlackJackKata
         }
 
 
-        private bool ValidateInput(string incomingString)
+        public bool ValidateInput(string incomingString)
         {
             if (incomingString == "1" || incomingString == "0")
             {

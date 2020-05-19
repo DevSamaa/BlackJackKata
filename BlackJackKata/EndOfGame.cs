@@ -7,19 +7,19 @@ namespace BlackJackKata
         {
         }
 
-        public void FindWinnner(int humanScore, int dealerScore)
+        public string FindWinnner(int humanScore, int dealerScore)
         {
             if (humanScore > dealerScore)
             {
-                Console.WriteLine("Human wins");
+                return "Human wins";
             }
             else if (humanScore == dealerScore)
             {
-                Console.WriteLine("It's a tie! Both the Human and the Dealer win!");
+                return "It's a tie! Both the Human and the Dealer win!";
             }
             else
             {
-                Console.WriteLine("Dealer Wins");
+               return "Dealer Wins";
             }
         }
     }

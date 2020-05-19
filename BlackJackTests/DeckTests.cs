@@ -19,7 +19,7 @@ namespace BlackJackTests
         }
 
         [Fact]
-        public void CreateDeck_ShouldHaveLengthof52_UsingLengthMethod()
+        public void CreateDeck_WithLengthof52_UsingLengthMethod()
         {
             var cardArray = deckOfCards.ToArray();
 
@@ -27,36 +27,19 @@ namespace BlackJackTests
         }
 
         [Fact]
-        public void CreateDeck_ShouldHaveLengthof52_UsingCountMethod()
+        public void CreateDeck_WithLengthof52_UsingCountMethod()
         {
             
             var countOfCards = deckOfCards.Count();
             Assert.Equal(52, countOfCards);
         }
 
-
-        [Fact]
-        public void CreateDeck_GivenCardShouldExist()
-        {
-            //arrange
-            var unshuffledDeckOfCards = deck.CreateCards();
-
-            Assert.Equal("CLUB", unshuffledDeckOfCards[0].suit);
-            Assert.Equal("A", unshuffledDeckOfCards[0].face);
-        }
-
-
-
         
         [Fact]
-        public void CreateDeck_GivenCardShouldExist_UsingFindAll()
+        public void CreateADeckWith13CLUBCards()
         {
-
             var allClubs = deckOfCards.FindAll(card => card.suit.Contains("CLUB"));
-
             Assert.Equal(13, allClubs.Count);
-
-
         }
 
 
@@ -66,19 +49,15 @@ namespace BlackJackTests
         [InlineData("DIAMOND", 13)]
         [InlineData("HEART", 13)]
         [InlineData("SPADE", 13)]
-        public void CreateDeck_GivenCardShouldExist_UsingFindAll_Inline(string incomingSuit, int expectedSuits)
+        public void CreateADeckWithAll4Suits(string incomingSuit, int expectedSuits)
         {
-
             var allClubs = deckOfCards.FindAll(card => card.suit.Contains(incomingSuit));
-
             Assert.Equal(expectedSuits, allClubs.Count);
-
-
         }
 
 
         [Fact]
-        public void ShuffleTheDeck_GivenADeck_AndReturnDifferentDeck()
+        public void ShuffleTheDeck()
         {
             //arrange
             var unshuffledDeckOfCards = deck.CreateCards();
@@ -89,9 +68,33 @@ namespace BlackJackTests
             //assert
             //counts of both lists should be the same (52)
             Assert.Equal(unshuffledDeckOfCards.Count, shuffledDeck.Count);
-            //actual lists should not be the same
-            Assert.NotEqual(unshuffledDeckOfCards, shuffledDeck);
+
+            //order of lists should not be the same
+            var result = isNotSameOrder(unshuffledDeckOfCards, shuffledDeck);
+       
+            Assert.True(result);
         }
+
+
+        public bool isNotSameOrder(List<Card> unshuffledDeck, List<Card> shuffledDeck)
+        {
+            bool result = false;
+            for (int i = 0; i < unshuffledDeck.Count; i++)
+            {
+             
+                if (unshuffledDeck[i].face == shuffledDeck[i].face && unshuffledDeck[i].suit == shuffledDeck[i].suit)
+                {
+                    continue;
+                }
+                else
+                {
+                    result = true;
+                    break;
+                }
+            }
+            return result;
+        }
+
 
         [Fact]
         public void ShuffleTheDeck_GivenADeck_ShouldReturnDifferentDeckEachTime()
@@ -103,11 +106,10 @@ namespace BlackJackTests
             var shuffledDeckOne = deck.ShuffleCards(unshuffledDeckOfCards);
             var shuffledDeckTwo = deck.ShuffleCards(unshuffledDeckOfCards);
 
-            //assert
-            //counts of both lists should be the same 
-            Assert.Equal(shuffledDeckOne.Count, shuffledDeckTwo.Count);
-            //actual lists should not be the same
-            Assert.NotEqual(shuffledDeckOne, shuffledDeckTwo);
+            //order of lists should not be the same
+            var result = isNotSameOrder(shuffledDeckOne, shuffledDeckTwo);
+
+            Assert.True(result);
         }
     }
 }

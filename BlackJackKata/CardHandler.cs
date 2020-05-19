@@ -15,11 +15,12 @@ namespace BlackJackKata
             playersCards.Add(removedCard);
         }
 
-        private Card RemoveCardFromDeck(List<Card> incomingDeck)
+        public Card RemoveCardFromDeck(List<Card> incomingDeck)
         {
             var pickedCard = incomingDeck[0];
             incomingDeck.RemoveAt(0);
             return pickedCard;
+
         }
 
 
